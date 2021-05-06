@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="javascripts/handlers.js"></script>
+
+    
+    
+  </head>
+  <body>
+
+    <div class="container-main">
+      <div id="main-bar">
+        <img src="images/logo.png" alt="Flowers in Chania"> 
+  
+  
+      </div>
+      
+      <h1>Welcome</h1>
+      
+      <h2 id="title">Please, select your business</h1>
+
+      <div class="container-buttons">
+
+
+        <% data.forEach((elem,i) => {%>
+          
+        
+         
+          <div class="select-button" data-pk="<%= i %>"href="#">
+            <div style="justify-content: center;display: grid;">
+            <p><%= elem.Name %></p>
+            
+            <i class="fas fa-coffee"></i>
+          </div>
+          </div>
+        
+        
+
+
+
+      
+          <% }) %>
+
+
+      </div>
+
+      <div class="container-questions">
+
+        <form>
+
+
+          <div class="field-wrap">
+          <label for="revenue">Revenue per costumer</label>
+          <input type="text" id="revenue" name="revenue" value="" readonly>
+          </div>
+          <div class="field-wrap">
+          <label for="month">How Many Times Per Month?</label>
+          <input type="text" id="month" name="month" value="">
+          </div>
+          <div class="field-wrap">
+          <label for="times-month">How Many Months per year?</label>
+          <select name="times-month" id="times-month">
+            <option>Select a value</option>
+          </select>
+          
+
+          </div>
+          <div class="field-wrap">
+          <label for="costumer-years">How Many Years Customer Stays With you?</label>
+          <input type="text" id="costumer-years" name="costumer-years" value="">
+          </div>
+
+          <div style=" display:flex; align-items: center;">
+
+          <div class="button" id="submit" href="#">Submit</div>
+          </div>
+        </form>
+
+
+      </div>
+      <div id="container-results" > 
+        <div class="results" style="">
+        <div class="result" style="margin-right: 20px;">
+          <h4>Customers value per year</h4>
+          <hr style="width:50%; color: #F15328;margin-top: 0px;"> 
+          <p id="value-y"></p>
+            
+            
+            
+          
+        </div>
+
+        <div class="result" style="margin-left: 20px;">
+          <h4>Life value of your customer is </h4>
+          <hr style="width:50%; color: #F15328;margin-top: 0px;"> 
+
+          <p id="value-life"></p>
+          
+          
+        </div>
+        
+        
+        
+      </div>
+      <div style=" display:flex; align-items: center;">
+
+        <div class="button" id="back" href="#">Go Back</div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+  </body>
+  <script>
+  let selected
+  var array=<%-JSON.stringify(data)%>;
+  console.log(array[1]);
+
+
+  $(".select-button").click(function() {
+    selected=array[parseInt($(this).data('pk'))];
+    
+    console.log(selected);
+    $("#revenue").val(selected.money)
+    $('.container-questions').toggle();
+    $('.container-buttons').toggle();
+
+    });
+
+
+  </script>
+</html>
