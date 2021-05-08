@@ -11,20 +11,33 @@
     
   </head>
   <body>
+    <div class="header">
 
-    <div class="container-main">
-      <div id="main-bar">
-        <img src="images/logo.png" alt="Flowers in Chania"> 
-  
-  
-      </div>
-      
       <h1>Welcome</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus mauris sit amet purus fermentum rhoncus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus mauris sit amet purus fermentum rhoncus  </p>
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="container-main">
       
-      <h2 id="title">Please, select your business</h1>
-
+      
+        <img id="logo" src="images/logo.png" alt="Flowers in Chania"> 
+  
+  
+      
+      
+      <h2 id="title">Please, select your business</h2>
+      <hr>
+      
       <div class="container-buttons">
-
+        
 
         <% data.forEach((elem,i) => {%>
           
@@ -32,9 +45,9 @@
          
           <div class="select-button" data-pk="<%= i %>"href="#">
             <div style="justify-content: center;display: grid;">
-            <p><%= elem.Name %></p>
+            <p style="color: #24355a;"><%= elem.Name %></p>
             
-            <i class="fas fa-coffee"></i>
+            <img src="images/cup.png" style="width: 67px;">
           </div>
           </div>
         
@@ -45,41 +58,27 @@
       
           <% }) %>
 
-
       </div>
 
       <div class="container-questions">
 
-        <form>
+        <div id="text"class="field-wrap">
+          <img style="width: 30px; position: relative; top: 31px;"src="images/seta.png" alt="" >
+          <input type="text" id="answer" name="" value="">
+          
 
 
-          <div class="field-wrap">
-          <label for="revenue">Revenue per costumer</label>
-          <input type="text" id="revenue" name="revenue" value="" readonly>
-          </div>
-          <div class="field-wrap">
-          <label for="month">How Many Times Per Month?</label>
-          <input type="text" id="month" name="month" value="">
-          </div>
-          <div class="field-wrap">
-          <label for="times-month">How Many Months per year?</label>
+        </div>
+        <div id="drop"class="field-wrap ">
+          <img style="width: 30px; position: relative; top: 31px;"src="images/seta.png" alt="" >
           <select name="times-month" id="times-month">
-            <option>Select a value</option>
+            <option value="">Select a value</option>
           </select>
           
 
-          </div>
-          <div class="field-wrap">
-          <label for="costumer-years">How Many Years Customer Stays With you?</label>
-          <input type="text" id="costumer-years" name="costumer-years" value="">
-          </div>
 
-          <div style=" display:flex; align-items: center;">
-
-          <div class="button" id="submit" href="#">Submit</div>
-          </div>
-        </form>
-
+        </div>
+        <div class="button" id="next" href="#">Next</div>
 
       </div>
       <div id="container-results" > 
@@ -115,19 +114,27 @@
 
 
     </div>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+
   </body>
   <script>
+
+
+  let answers=[]
+
+  let questionNumber=0;
   let selected
   var array=<%-JSON.stringify(data)%>;
-  console.log(array[1]);
+ 
+  var questions=<%-JSON.stringify(questions)%> 
+  console.log(questions);
 
-
+  
+  
+  
   $(".select-button").click(function() {
     selected=array[parseInt($(this).data('pk'))];
     
-    console.log(selected);
+    question(questions[questionNumber]);
     $("#revenue").val(selected.money)
     $('.container-questions').toggle();
     $('.container-buttons').toggle();

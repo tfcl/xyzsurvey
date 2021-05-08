@@ -1,19 +1,27 @@
 [
     {
+        "pk":0,
         "Name":"NailSalon",
-        "money":60
-
+        "money":60,
+        "image":"./images"
     
     },
-    {
+    {   
+        "pk":1,
         "Name":"Dentist",
-        "money":514
+        "money":514,
+        "image":"./images"
+
 
     
     },
-    {
+    {   
+        "pk":2,
+
         "Name":"Coffee",
-        "money":6
+        "money":6,
+        "image":"./images"
+
 
     
     }

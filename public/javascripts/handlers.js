@@ -1,6 +1,54 @@
 
+
+
+
+
+
+
+
+
+
+
+
+function question(question){
+    $("#title").text(question.question);
+    $("#answer").val("");
+
+
+    if(question.pk!=0){
+
+        let previous=question.pk-1;
+        
+        console.log(previous);
+        console.log(questions[previous]);
+        if (questions[previous].input==="months"){
+            $('.field-wrap#text').css('display', 'grid')
+            $('.field-wrap#drop').css('display', 'none')
+    
+    
+        }
+    }
+
+
+    if(question.input==="months"){
+        $('.field-wrap#text').css('display', 'none')
+        $('.field-wrap#drop').css('display', 'grid')
+
+
+
+    }
+    
+}
+
+
+
 function calc(r,tm,my){
     let calc=(r*tm)*my;
+
+    
+    console.log(r);
+    console.log(tm);
+    console.log(my);
     return calc
 
 }
@@ -14,11 +62,14 @@ function calcy(calc,y){
 
 function clean(){
 
-    let timeM=$("#month").val("");
+    $("#answer").val("");
     
-    let y=$("#costumer-years").val("");
+ 
 
     $("#times-month").val($("#times-month option:first").val());
+    answers=[];
+
+    questionNumber=0;
 }
 
 
@@ -80,41 +131,100 @@ $(document).ready(function()    {
 
 
 
-    $("#submit").click(function() {
+    $("#next").click(function() {
         
         $( ".error" ).remove();
         
-        
-        let revenue=parseInt(selected.money) ;
+
+
+
+
+
+
+
+
+        if (questions[questionNumber].input==="text"){
+
+            answer=$("#answer").val();
+        }
+        else{
+            answer=$("#times-month").find(":selected").val()
+
+        }
+
+        console.log(answer);
+        if (answer){
+
+            
+            
+                    answers.push(parseInt(answer));
+                    console.log(answers);
+                    questionNumber++;
+                   
+            
+                    
+            
+            
+            
+                    if(questionNumber != questions.length){
+            
+                        question(questions[questionNumber]);
+            
+                    }
+                    else{
+            
+                        let val=calc(selected.money,answers[0],answers[1]);
+                        console.log(val);
+                        console.log(selected.money);
+            
+                        $("#value-y").text(val);
+                        
+                        $("#value-life").text(calcy(val,answers[2]))
+                        $('#container-results').toggle();
+                        $('.container-questions').toggle();
+            
+            
+            
+            
+            
+                    }
+
+
+        }
+        else{
+           renderError();
+
+        }
+        // let revenue=parseInt(selected.money) ;
 
         
-        let timeM=parseInt($("#month").val());
-        let my=parseInt($("#times-month").find(":selected").val());
-        let y=parseInt($("#costumer-years").val());
+        // let timeM=parseInt($("#month").val());
+        // let my=parseInt($("#times-month").find(":selected").val());
+        // let y=parseInt($("#costumer-years").val());
         
-        if (checkRequiredFields(timeM,my,y)){
+        // if (checkRequiredFields(timeM,my,y)){
 
             
             
-                    let val=calc(revenue,timeM,my)
-                    $("#value-y").text(val);
+        //             let val=calc(revenue,timeM,my)
+        //             $("#value-y").text(val);
             
-                    $("#value-life").text(calcy(val,y))
+        //             $("#value-life").text(calcy(val,y))
             
-                    $('#container-results').toggle();
-                    $('.container-questions').toggle();
+        //             $('#container-results').toggle();
+        //             $('.container-questions').toggle();
                     
 
 
-        }
+        // }
 
 
-        else{
+        // else{
 
-            renderError();
+        //     renderError();
 
-        }
-        console.log(checkRequiredFields(timeM,my,y));
+        // }
+        // console.log(checkRequiredFields(timeM,my,y));
 
         // console.log(calc(60,2,12));
     });

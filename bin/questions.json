@@ -1,0 +1,25 @@
+[
+    {
+        "pk":"0",
+        "question":"How Many Times Per Month?",
+        "score":50,
+        "input":"text"
+
+    
+    },
+    {   
+        "pk":"1",
+        "question":"How Many Months per year?",
+        "score":60,
+        "input":"months"
+    
+    },
+    {   
+        "pk":"2",
+        "question":"How Many Years Customer Stays With you?",
+        "score":60,
+        "input":"text"   
+    }
+ 
+
+]
