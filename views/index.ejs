@@ -25,9 +25,11 @@
 
 
     </div>
+
+
     <div class="container-main">
       
-      
+
         <img id="logo" src="images/logo.png" alt="Flowers in Chania"> 
   
   
@@ -61,7 +63,11 @@
       </div>
 
       <div class="container-questions">
-
+        <div id="money">
+          <img  src="images/hand.png" style="width: 40px;" alt="Flowers in Chania"> 
+  
+            <p>></p>
+          </div>
         <div id="text"class="field-wrap">
           <img style="width: 30px; position: relative; top: 31px;"src="images/seta.png" alt="" >
           <input type="text" id="answer" name="" value="">
@@ -79,25 +85,34 @@
 
         </div>
         <div class="button" id="next" href="#">Next</div>
-
+        <div id="container-cur"> 
+          <img style="height:50px;width: 50px; "src="images\exclamation-point.png" alt="" >
+          
+          
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur numquam nam eligendi velit modi, voluptas veritatis aliquam, voluptatibus eum quod ut, quas culpa hic omnis eius commodi sequi vel repudiandae?</p>
+        </div>
       </div>
       <div id="container-results" > 
         <div class="results" style="">
         <div class="result" style="margin-right: 20px;">
           <h4>Customers value per year</h4>
-          <hr style="width:50%; color: #F15328;margin-top: 0px;"> 
+          <div class="div-result">
+           
           <p id="value-y"></p>
             
-            
+          </div>
             
           
         </div>
 
         <div class="result" style="margin-left: 20px;">
           <h4>Life value of your customer is </h4>
-          <hr style="width:50%; color: #F15328;margin-top: 0px;"> 
+          
+          <div class="div-result">
 
-          <p id="value-life"></p>
+            <p id="value-life"></p>
+
+          </div>
           
           
         </div>
@@ -133,7 +148,7 @@
   
   $(".select-button").click(function() {
     selected=array[parseInt($(this).data('pk'))];
-    
+    $("#money p").text(selected.money+" $");
     question(questions[questionNumber]);
     $("#revenue").val(selected.money)
     $('.container-questions').toggle();

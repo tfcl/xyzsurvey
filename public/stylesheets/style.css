@@ -31,6 +31,41 @@ h2 {
   height: 100%;
 }
 
+
+
+#money{
+  position: absolute;
+  right: 50px;
+  top: 25px;
+  display:flex;
+
+}
+
+
+
+#brand-color{
+color: #F15328;
+
+
+}
+
+
+#brand-color2{
+
+  color:#24355a;
+  
+  
+  } 
+  
+  
+  
+#money p{
+  padding-left: 10px;
+  color:#24355a;
+  
+  }
+
+
 .container-main #logo{
   width: 200px;
   padding-top: 25px;
@@ -56,7 +91,9 @@ h2 {
   text-align: center;
   margin: auto;
   width: 800px;
-  height:800px;
+  height:450px;
+  background-size: 800px 460px;
+  background-repeat: no-repeat;
   padding-top: 45px;
   position: relative;
   
@@ -76,9 +113,13 @@ h2 {
 .container-questions{
 
   text-align: left;
-  padding: 45px 100px;
+  padding: 15px 100px;
   display: none;
 
+}
+
+#next{
+ 
 }
 
 #container-results{
@@ -88,7 +129,7 @@ h2 {
 }
 .field-wrap {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   display: grid;
   font-size: large;
 
@@ -121,6 +162,7 @@ input[type=text] {
   border-radius: 4px;
   height: 27px;
   padding-left: 30px;
+  box-sizing:border-box;
 }
 
 input[type=text]:focus {
@@ -217,22 +259,23 @@ label {
 }
 
 .results{
-  background-color: white;
-  border: 3px solid #F15328;
+  
 
   border-radius: 5px;
   border-bottom: 0px;
   display:flex; 
   justify-content: center;
+  margin-bottom: 30px;
 
 }
 
 
 .result h4{
 
-  color: #24355a;
+  color: black;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  
 
 }
 
@@ -242,12 +285,40 @@ label {
 
   font-size: 20px;
   font-weight: 400;
+
 }
 
 
 .result{
   justify-content: center;
   display: grid;
+ 
   
+
+}
+
+.result .div-result{
+  margin: auto;
+  border: 2px solid #24355a;
+  border-radius: 15px;
+  width: 120px;
+}
+
+
+#container-cur{
+
+  display: flex;
+  align-items:center;
+  border:1px solid #F15328;
+  margin-top: 30px;
+  border-radius: 1px;
+}
+#container-cur p{
+  padding:10px 5px 10px 10px;
+
+}
+
+#container-cur img{
+  padding-left: 5px;
 
 }

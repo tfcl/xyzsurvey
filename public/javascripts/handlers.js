@@ -11,32 +11,70 @@
 
 
 function question(question){
+
+
+
     $("#title").text(question.question);
-    $("#answer").val("");
-
-
+    let previous=question.pk-1;
     if(question.pk!=0){
+ 
+        switch(questions[previous].input){
+            case "months":
+                $('.field-wrap#drop').css('display', 'none')
+            
+                break;
+    
+            
+            case "text":
 
-        let previous=question.pk-1;
-        
-        console.log(previous);
-        console.log(questions[previous]);
-        if (questions[previous].input==="months"){
-            $('.field-wrap#text').css('display', 'grid')
-            $('.field-wrap#drop').css('display', 'none')
-    
-    
+                $('.field-wrap#text').css('display', 'none')
+                break;
+
+
         }
     }
+        switch (question.input) {
+            case "months":
+                $("#times-month").val($("#times-month option:first").val());
+
+                $('.field-wrap#drop').css('display', 'grid')
+            
+
+            break;
+
+        
+            case "text":
+                $("#answer").val("");
+
+                $('.field-wrap#text').css('display', 'grid')
+
+                break;
+
+        }
+
+         
+    // if(question.pk!=0){
+
+    //     let previous=question.pk-1;
+        
+    //     console.log(previous);
+    //     console.log(questions[previous]);
+    //     if (questions[previous].input==="months"){
+    //         $('.field-wrap#text').css('display', 'grid')
+    //         $('.field-wrap#drop').css('display', 'none')
+    
+    
+    //     }
+    // }
 
 
-    if(question.input==="months"){
-        $('.field-wrap#text').css('display', 'none')
-        $('.field-wrap#drop').css('display', 'grid')
+    // if(question.input==="months"){
+    //     $('.field-wrap#text').css('display', 'none')
+    //     $('.field-wrap#drop').css('display', 'grid')
 
 
 
-    }
+    // }
     
 }
 
@@ -64,9 +102,15 @@ function clean(){
 
     $("#answer").val("");
     
- 
+    $("#title").text("Select your business");
+    
 
     $("#times-month").val($("#times-month option:first").val());
+
+    $('.field-wrap#drop').css('display', 'none');
+    $('.field-wrap#text').css('display', 'none');
+
+
     answers=[];
 
     questionNumber=0;
@@ -86,6 +130,25 @@ function renderError(){
     
 
 }
+
+function check(field){
+    if(field){
+        if(isNaN(field)){
+            return false
+        }
+        else{
+            return true
+        }
+
+    }
+    else{
+        return false
+
+    }
+
+
+}
+
 
 function checkRequiredFields(tm,my,y){
 
@@ -153,7 +216,7 @@ $(document).ready(function()    {
         }
 
         console.log(answer);
-        if (answer){
+        if (check(answer)){
 
             
             
@@ -172,7 +235,8 @@ $(document).ready(function()    {
             
                     }
                     else{
-            
+                        $("#title").text("Results");
+                        
                         let val=calc(selected.money,answers[0],answers[1]);
                         console.log(val);
                         console.log(selected.money);
